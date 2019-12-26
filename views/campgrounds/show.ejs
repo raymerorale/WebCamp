@@ -1,0 +1,74 @@
+<%- include("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Available Camps</p>
+            <div class="list-group">
+                <li class="list-group-item active">Campground 1</li>
+                <li class="list-group-item">Campground 2</li>
+                <li class="list-group-item">Campground 3</li>
+            </div>
+            <div class="card mt-4">
+                    <div style="overflow:hidden;background:none!important;">
+                        <iframe height="320" width="255" id="gmap_canvas" src="https://maps.google.com/maps?q=taal%20lake&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/"></a>
+                    </div>
+            
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <img class="card-img-top" src="<%= campground.image %>">
+                <div class="card-body p-3">
+                    <h5 class="card-title float-right">$9.00/night</h5>
+                    <h4 class="card-title float-left"><a href=""><%= campground.name %></a></h4>
+                    <p class="card-text float-left" style="text-indent: 50px;"><%= campground.description %></p>
+                    <p class="card-text float-left">
+                        <em>Submitted by <%= campground.author.username %></em>
+                    </p>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                        <form class="float-right ml-2" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                        <p><a class="card-text float-right btn text-light btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a></p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="card mt-3 mb-3 bg-light">
+                <div class="card-header">
+                    <a class="btn btn-success float-right" href="/campgrounds/<%= campground._id %>/comments/new">
+                        Leave a Review</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% campground.comments.forEach(function (comment) { %>
+                        <li class="list-group-item">
+                            <p class="m-0">
+                                <strong><%= comment.author.username %></strong>
+                                <span class="float-right text-secondary" style="font-size: 15px !important;">10 days ago</span>
+                            </p>
+                            <p class="float-left"><%= comment.text %></p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <div class="mt-5">
+                                    <a class="btn btn-sm btn-info float-left" 
+                                    href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                                    <form class="float-left ml-2" 
+                                    action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            <% } %>
+                        </li> 
+                    <% }) %>
+                </ul>
+            </div> 
+        </div>
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,13 @@
+img{
+    width:100%;
+}
+footer{
+    position: absolute;
+    font-size: 14px !important;
+}
+.w-adjust{
+    width: 400px;
+}
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
+}
