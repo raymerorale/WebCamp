@@ -63,6 +63,22 @@ router.get("/:id", function(req, res){
     });
 });
 
+//SEARCH ROUTE
+router.post("/search", function(req, res){
+    console.log(req.body.search);
+    Campground.find({ name: { $regex: req.body.search, $options: 'i' } }, function(err, foundCampground){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        } else{
+            console.log(foundCampground);
+            res.render("campgrounds/index",
+            {
+                campgrounds: foundCampground
+            });
+        }
+    })
+})
 //EDIT ROUTE
 router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
