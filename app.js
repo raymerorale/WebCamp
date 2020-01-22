@@ -13,6 +13,7 @@ var commentRoutes       = require("./routes/comments"),
     indexRoutes         = require("./routes/index");
 
 const port = process.env.PORT || 3000;
+const ip = process.env.IP;
 const database = "mongodb://localhost/yelp-camp" || "mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
 
@@ -56,6 +57,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 //SERVER CONFIG
-app.listen(port, function(){
+app.listen(port, ip, function(){
     console.log("Yelpcamp server started!");
 });
