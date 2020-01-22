@@ -17,7 +17,7 @@ const ip = process.env.IP;
 const database = "mongodb://localhost/yelp-camp" || "mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
 
-mongoose.connect(database,
+mongoose.connect("mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority",
     {
         useNewUrlParser:true, 
         useUnifiedTopology:true,
