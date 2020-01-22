@@ -14,10 +14,10 @@ var commentRoutes       = require("./routes/comments"),
 
 const port = process.env.PORT || 3000;
 const ip = process.env.IP;
-const database = "mongodb://localhost/yelp-camp" || "mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const database = process.env.DATABASEURL || "mongodb://localhost/yelp-camp";
 
 
-mongoose.connect("mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority",
+mongoose.connect(database,
     {
         useNewUrlParser:true, 
         useUnifiedTopology:true,
