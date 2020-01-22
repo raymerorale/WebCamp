@@ -1,3 +1,4 @@
+
 img{
     width:100%;
 }
@@ -9,7 +10,13 @@ footer{
     width: 400px;
 }
 .navbar-brand{
-    font-family: 'Pacifico', cursive;
+    font-family: 'Bowlby One SC', cursive;
+}
+.theme-bg-color{
+    background-color: #6699ff !important;
+}
+.light{
+    color: #e6e6e6 !important;
 }
 .new-container{
     width: 50%;
@@ -22,4 +29,7 @@ textarea{
     .w-adjust{
         width: 80%;
     }
+}
+.img-resize{
+    height: 250px;
 }
