@@ -5,7 +5,7 @@
     <div class="w-adjust m-auto">
         <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="text" name="comment[text]"/>
+                <textarea class="form-control" name="comment[text]"></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary w-100">Submit</button>

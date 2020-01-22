@@ -11,3 +11,15 @@ footer{
 .navbar-brand{
     font-family: 'Pacifico', cursive;
 }
+.new-container{
+    width: 50%;
+    margin: auto;
+}
+textarea{
+    height: 220px !important;
+}
+@media (max-width: 576px) {
+    .w-adjust{
+        width: 80%;
+    }
+}

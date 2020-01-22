@@ -12,9 +12,11 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
 
-//DATABASE CONFIG
-//mongoose.connect("mongodb://localhost/yelp-camp",
-mongoose.connect("mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority",
+const port = process.env.PORT || 3000;
+const database = "mongodb://localhost/yelp-camp" || "mongodb+srv://raymer:aakoyun17@cluster0-llkhw.gcp.mongodb.net/test?retryWrites=true&w=majority";
+
+
+mongoose.connect(database,
     {
         useNewUrlParser:true, 
         useUnifiedTopology:true,
@@ -54,7 +56,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 //SERVER CONFIG
-//app.listen(2000, function(){
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(port, function(){
     console.log("Yelpcamp server started!");
 });

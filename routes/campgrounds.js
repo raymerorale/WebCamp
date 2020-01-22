@@ -71,7 +71,6 @@ router.post("/search", function(req, res){
             console.log(err);
             res.redirect("/campgrounds");
         } else{
-            console.log(foundCampground);
             res.render("campgrounds/index",
             {
                 campgrounds: foundCampground
