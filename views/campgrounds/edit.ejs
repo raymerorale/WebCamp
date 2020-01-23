@@ -1,18 +1,77 @@
 <%- include("../partials/header") %>
 <%- include("../partials/alert") %>
 
-<div class="container">
+<div class="container-form bg-white mt-4 p-3 shadow">
     <h1 class="pt-2 mb-3 text-center">Edit <%= campground.name %></h1>
-    <div class="w-adjust m-auto">
+    <div class="mt-4">
+        <p class="font-sm text-secondary">Fields marked * are required.</p>
         <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
             <div class="form-group">
+                <label>Campground Name*</label>
                 <input class="form-control" type="text" value="<%= campground.name %>" name="campground[name]"/>
             </div>
             <div class="form-group">
+                <label>Display Picture*</label>
                 <input class="form-control" type="text" value="<%= campground.image %>" name="campground[image]"/>
             </div>
             <div class="form-group">
+                <label>Description*</label>
                 <textarea class="form-control" name="campground[description]"><%= campground.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label>Price*<span class="text-secondary"> Pesos/Night</span></label>
+                <input class="form-control" type="text" value="<%= campground.price %>" name="campground[price]"/>
+            </div>
+            <div class="form-group">
+                <label>Location*</label>
+                <input class="form-control" type="text" value="<%= campground.location %>" name="campground[location]"/>
+            </div>
+            <div class="form-group">
+                <label>Phone Number*</label>
+                <input class="form-control" type="text" value="<%= campground.contact %>" name="campground[contact]"/>
+            </div>
+            <div class="form-group">
+                <label>Booking Window*</label>
+                <div class="form-row">
+                    <div class="col-6">
+                        <select name="campground[starting]" class="custom-select">
+                            <option selected disabled><%= campground.starting %></option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="campground[ending]" class="custom-select">
+                            <option selected disabled><%= campground.ending %></option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Amenities*</label>
+                <input class="form-control" type="text" value="<%= campground.amenities %>" name="campground[amenities]"/>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary w-100">Submit</button>
@@ -21,9 +80,4 @@
         <a href="/campgrounds">Go Back</a>
     </div>
 </div>
-<style type="text/css">
-    footer{
-        bottom: 0;
-    }
-</style>
 <%- include("../partials/footer") %>

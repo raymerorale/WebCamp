@@ -10,7 +10,7 @@
                     Booking Window
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Jan - Jul</li>
+                    <li class="list-group-item"><%= campground.starting %> - <%= campground.ending %></li>
                 </ul>
             </div>
             <div class="card shadow mb-4">
@@ -19,7 +19,12 @@
                     Amenities
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Wifi</li>
+                    <li class="list-group-item">
+                        <% if(campground.amenities == ''){ %>
+                            <span class="text-secondary">not specified</span>
+                        <%} else %>
+                            <%= campground.amenities %>
+                    </li>
                 </ul>
             </div>
             <div class="card shadow mb-4">
@@ -28,25 +33,33 @@
                     Contact
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">+63 948 011 8331</li>
+                  <li class="list-group-item"><%= campground.contact %></li>
                 </ul>
             </div>
-            <div class="card shadow mb-4">
-                <div style="overflow:hidden;background:none!important;">
-                    <iframe class="card-img" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=mataas%20na%20kahoy&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    <a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/"></a>
+            <div class="card shadow">
+                <div class="mb-0 pb-0" style="overflow:hidden;background:none!important;height:300px;">
+                    <iframe class="card-img-top" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=mataas%20na%20kahoy&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    
                 </div>
-                <div class="row">
-                <i class="h2 ml-2 fas fa-map-marked-alt col-2"></i>
-                <h6 class="card-text pb-2 col-8">Mataas Na Kahoy, Batangas, Philippines</h6>
+                <div class="mt-0 card-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Location
                 </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= campground.location %></li>
+                </ul>
             </div>
         </div>
         <div class="col-md-9">
             <div class="card">
                 <img class="card-img-top" src="<%= campground.image %>">
                 <div class="card-body p-3">
-                    <h5 class="card-title float-right">$9.00/night</h5>
+                    <h5 class="card-title float-right">
+                        <% if(campground.price == 0 || campground.price == null){ %>
+                            Free
+                        <% } else { %>
+                        ₱<%= campground.price.toFixed(2) %>/night</h5>
+                        <% } %>
                     <h4 class="card-title float-left"><a href=""><%= campground.name %></a></h4>
                     <p class="card-text float-left" style="text-indent: 50px;"><%= campground.description %></p>
                     <p class="card-text float-left">

@@ -30,6 +30,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
+    var price = req.body.price;
+    var location = req.body.location;
+    var contact = req.body.contact;
+    var starting = req.body.starting;
+    var ending = req.body.ending;
+    var amenities = req.body.amenities;
     var author = {
         id: req.user._id,
         username: req.user.username
@@ -39,6 +45,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             name:name, 
             image:image, 
             description: description,
+            price: price,
+            location: location,
+            contact: contact,
+            starting: starting,
+            ending: ending,
+            amenities: amenities,
             author: author
         }, function(err, newcampground){
         if(err){
@@ -47,6 +59,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             res.redirect("/campgrounds");
         } else{
             req.flash("success", "Successfully added a campground");
+            console.log(newcampground);
             res.redirect("/campgrounds");
         }
     });
