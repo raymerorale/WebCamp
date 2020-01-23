@@ -13,6 +13,8 @@ router.get("/", function(req, res){
         else{
             res.render("campgrounds/index",
             {
+                searchKey: null,
+                searchResult: null,
                 campgrounds: allCampgrounds,
                 currentUser: req.user
             });
@@ -78,16 +80,21 @@ router.get("/:id", function(req, res){
 
 //SEARCH ROUTE
 router.post("/search", function(req, res){
-    console.log(req.body.search);
     Campground.find({ name: { $regex: req.body.search, $options: 'i' } }, function(err, foundCampground){
         if(err){
             console.log(err);
             res.redirect("/campgrounds");
         } else{
+            // if(foundCampground.length == 0){
+            //     req.flash("info", "Your search returned no matches.");
+            // } 
             res.render("campgrounds/index",
-            {
+            {  
+                searchKey: req.body.search,
+                searchResult: foundCampground.length,
                 campgrounds: foundCampground
             });
+            
         }
     })
 })
