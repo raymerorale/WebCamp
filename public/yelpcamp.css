@@ -18,12 +18,8 @@ footer{
 .light{
     color: #e6e6e6 !important;
 }
-.new-container{
-    width: 50%;
-    margin: auto;
-}
 textarea{
-    height: 220px !important;
+    height: 120px !important;
 }
 @media (max-width: 576px) {
     .w-adjust{
@@ -32,4 +28,11 @@ textarea{
 }
 .img-resize{
     height: 250px;
+}
+.container-form{
+    width: 50%;
+    margin: auto;
+}
+.font-sm{
+    font-size: 12px !important;
 }

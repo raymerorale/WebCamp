@@ -1,18 +1,73 @@
 <%- include("../partials/header") %>
 <%- include("../partials/alert") %>
 
-<div class="container">
-    <h1 class="pt-2 mb-3 text-center">Create A New Campground</h1>
-    <div class="w-adjust m-auto">
+<div class="container-form bg-white mt-4 p-3 shadow">
+    <h1 class="pt-2 mb-3 text-center muli">Create New Campground</h1>
+    <div class="mt-4">
+        <p class="font-sm text-secondary">Field marked * are required.</p>
         <form action="/campgrounds" method="POST">
             <div class="form-group">
+                <label>Campground Name*</label>
                 <input class="form-control" type="text" placeholder="name" name="name"/>
             </div>
             <div class="form-group">
+                <label>Display Picture*</label>
                 <input class="form-control" type="text" placeholder="image url" name="image"/>
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="description" name="description"/>
+                <label>Description*</label>
+                <textarea class="form-control" type="text" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Location*</label>
+                <input class="form-control" type="text" placeholder="Rizal National Park, Manila" name="location"/>
+            </div>
+            <div class="form-group">
+                <label>Phone Number*</label>
+                <input class="form-control" type="text" value="+639" name="contact"/>
+            </div>
+            <div class="form-group">
+                <label>Booking Window*</label>
+                <div class="form-row">
+                    <div class="col-6">
+                        <select class="custom-select">
+                            <option selected disabled>Starting Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="custom-select">
+                            <option selected disabled>Ending Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Amenities <span class="text-secondary">(seperated by commas)</span></label>
+                <input class="form-control" type="text" placeholder="Example: boating, fishing, hiking" name="amenities"/>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary w-100">Submit</button>
@@ -21,9 +76,5 @@
         <a href="/campgrounds">Go Back</a>
     </div>
 </div>
-<style type="text/css">
-    footer{
-        bottom: 0;
-    }
-</style>
+
 <%- include("../partials/footer") %>
