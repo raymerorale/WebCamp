@@ -11,11 +11,25 @@
   <div class="card-columns mt-4">
         <% campgrounds.forEach(function(campground) { %>
             <div>
-                <div class="card mb-3">
-                    <img src=" <%= campground.image %>" class="card-img-top img-resize">
+                <div class="card shadow mb-4" style="width: 350px;">
+                    <a href="/campgrounds/<%= campground._id %>">
+                        <img src=" <%= campground.image %>" class="card-img-top img-resize">
+                    </a>
                     <div class="card-body">
-                        <h6 class="card-title"><%= campground.name %></h6>
-                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-sm btn-primary">More Info</a>
+                        <a href="/campgrounds/<%= campground._id %>" 
+                        class="lead card-title text-dark">
+                        <%= campground.name %></a>
+                        <span class="text-secondary float-right">
+                        <% if(campground.price == 0 || campground.price == null){ %>
+                            Free
+                        <% } else { %>
+                        ₱<%= campground.price.toFixed(2) %></h5>
+                        <% } %>
+                        </span>
+                        <p class="mt-1 mb-0 text-primary">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span class="text-secondary">12 reviews</span>
+                        </p>
                     </div>
                 </div>
             </div>

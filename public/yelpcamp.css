@@ -6,9 +6,7 @@ footer{
     position: absolute;
     font-size: 14px !important;
 }
-.w-adjust{
-    width: 400px;
-}
+
 .navbar-brand{
     font-family: 'Bowlby One SC', cursive;
 }
@@ -22,12 +20,12 @@ textarea{
     height: 120px !important;
 }
 @media (max-width: 576px) {
-    .w-adjust{
-        width: 80%;
+    .container{
+        width: 100%;
     }
 }
 .img-resize{
-    height: 250px;
+    height: 240px;
 }
 .container-form{
     width: 50%;
