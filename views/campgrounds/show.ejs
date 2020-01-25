@@ -69,14 +69,34 @@
                         <form class="float-right ml-2" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-danger">Delete</button>
                         </form>
-                        <p><a class="card-text float-right btn text-light btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a></p>
+                        <p><a class="card-text float-right btn btn-primary" href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a></p>
                     <% } %>
                 </div>
             </div>
             <div class="card mt-3 mb-3 bg-light">
                 <div class="card-header">
-                    <a class="btn btn-success float-right" href="/campgrounds/<%= campground._id %>/comments/new">
-                        Leave a Review</a>
+                    <button class="btn btn-success float-right" type="button" data-toggle="collapse" data-target="#collapseComment" aria-controls="collapseComment" aria-expanded="false" aria-label="Toggle navigation">
+                        Leave a Review
+                    </button>
+                </div>
+                <div class="collapse card-body" id="collapseComment">
+                    <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+                        <textarea id="comment" class="form-control" name="text"></textarea>
+                        <p class="mb-0 mt-2">Rating:
+                            <span class="text-primary">
+                                <i class="far fa-star" id="star1"></i>
+                                <i class="far fa-star" id="star2"></i>
+                                <i class="far fa-star" id="star3"></i>
+                                <i class="far fa-star" id="star4"></i>
+                                <i class="far fa-star" id="star5"></i>
+                            </span>
+                            <span class="ml-2 text-secondary">
+                            <input name="rating" id="starId" style="display:none;width:10px" type="text">
+                            </span>
+                            <span id="Reset" class="ml-2 btn btn-sm float-right btn-secondary">Reset</span>
+                            <button class="btn btn-sm float-right btn-primary">Submit</button>
+                        </p>
+                    </form>
                 </div>
                 <ul class="list-group list-group-flush">
                     <% campground.comments.forEach(function (comment) { %>
@@ -84,19 +104,51 @@
                             <p class="m-0">
                                 <strong><%= comment.author.username %></strong>
                                 <span class="float-right text-secondary" style="font-size: 15px !important;">10 days ago</span>
+                                <span class="text-primary ml-2">
+                                    <% for(var i=0; i<comment.rating; i++){ %>
+                                        <i class="fas fa-star"></i>
+                                    <% } %>
+                                    <% var rem = 5 - comment.rating %> 
+                                    <% for(var i=0; i<rem; i++){ %>
+                                        <i class="far fa-star"></i>
+                                    <% } %>
+                                </span>
                             </p>
-                            <p class="float-left"><%= comment.text %></p>
+                            
+                            <p class="float-left mt-2 mb-0"><%= comment.text %></p>
+                            
                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                                <div class="mt-5">
-                                    <a class="btn btn-sm btn-info float-left" 
-                                    href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                                <div class="float-right mb-2 mt-0">
+                                    <button class="btn btn-sm float-left" type="button" data-toggle="collapse" data-target="#collapseEdit" aria-controls="collapseEdit" aria-expanded="false" aria-label="Toggle navigation">
+                                        <i class="far fa-edit"></i></button>
                                     <form class="float-left ml-2" 
                                     action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm">
+                                            <i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                                <div class="card-body collapse" style="margin-top:30px" id="collapseEdit">
+                                    <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                        <textarea id="Ecomment" class="form-control" name="comment[text]"><%= comment.text %></textarea>
+                                        <p class="mb-0 mt-2">Rating:
+                                            <span class="text-primary">
+                                                <i class="far fa-star" id="Estar1"></i>
+                                                <i class="far fa-star" id="Estar2"></i>
+                                                <i class="far fa-star" id="Estar3"></i>
+                                                <i class="far fa-star" id="Estar4"></i>
+                                                <i class="far fa-star" id="Estar5"></i>
+                                            </span>
+                                            <span class="ml-2 text-secondary">
+                                            <input name="comment[rating]" id="EstarId" style="display:none;width:10px" type="text">
+                                            </span>
+                                            <span id="EditReset" class="ml-2 btn btn-sm float-right btn-secondary">Reset</span>
+                                            <button class="btn btn-sm float-right btn-primary">Submit</button>
+                                        </p>
                                     </form>
                                 </div>
                             <% } %>
-                        </li> 
+                        </li>
+                        
                     <% }) %>
                 </ul>
             </div> 

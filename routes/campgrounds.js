@@ -61,7 +61,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             res.redirect("/campgrounds");
         } else{
             req.flash("success", "Successfully added a campground");
-            console.log(newcampground);
             res.redirect("/campgrounds");
         }
     });

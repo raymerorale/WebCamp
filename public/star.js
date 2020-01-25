@@ -1,0 +1,100 @@
+
+$("#star1").click(function(){
+    $(star1).addClass('fas');
+    $(star2).removeClass('fas');
+    $(star3).removeClass('fas');
+    $(star4).removeClass('fas');
+    $(star5).removeClass('fas');
+    $(starId).val(1);
+})
+$("#star2").click(function(){
+    $(star1).addClass('fas');
+    $(star2).addClass('fas');
+    $(star3).removeClass('fas');
+    $(star4).removeClass('fas');
+    $(star5).removeClass('fas');
+    $(starId).val(2);
+})
+$("#star3").click(function(){
+    $(star1).addClass('fas');
+    $(star2).addClass('fas');
+    $(star3).addClass('fas');
+    $(star4).removeClass('fas');
+    $(star5).removeClass('fas');
+    $(starId).val(3);
+})
+$("#star4").click(function(){
+    $(star1).addClass('fas');
+    $(star2).addClass('fas');
+    $(star3).addClass('fas');
+    $(star4).addClass('fas');
+    $(star5).removeClass('fas');
+    $(starId).val(4);
+})
+$("#star5").click(function(){
+    $(star1).addClass('fas');
+    $(star2).addClass('fas');
+    $(star3).addClass('fas');
+    $(star4).addClass('fas');
+    $(star5).addClass('fas');
+    $(starId).val(5);
+})
+$("#Reset").click(function(){
+    $(star1).removeClass('fas');
+    $(star2).removeClass('fas');
+    $(star3).removeClass('fas');
+    $(star4).removeClass('fas');
+    $(star5).removeClass('fas');
+    $(starId).val(0);
+    $(comment).val('');
+})
+
+$("#Estar1").click(function(){
+    $(Estar1).addClass('fas');
+    $(Estar2).removeClass('fas');
+    $(Estar3).removeClass('fas');
+    $(Estar4).removeClass('fas');
+    $(Estar5).removeClass('fas');
+    $(EstarId).val(1);
+})
+$("#Estar2").click(function(){
+    $(Estar1).addClass('fas');
+    $(Estar2).addClass('fas');
+    $(Estar3).removeClass('fas');
+    $(Estar4).removeClass('fas');
+    $(Estar5).removeClass('fas');
+    $(EstarId).val(2);
+})
+$("#Estar3").click(function(){
+    $(Estar1).addClass('fas');
+    $(Estar2).addClass('fas');
+    $(Estar3).addClass('fas');
+    $(Estar4).removeClass('fas');
+    $(Estar5).removeClass('fas');
+    $(EstarId).val(3);
+})
+$("#Estar4").click(function(){
+    $(Estar1).addClass('fas');
+    $(Estar2).addClass('fas');
+    $(Estar3).addClass('fas');
+    $(Estar4).addClass('fas');
+    $(Estar5).removeClass('fas');
+    $(EstarId).val(4);
+})
+$("#Estar5").click(function(){
+    $(Estar1).addClass('fas');
+    $(Estar2).addClass('fas');
+    $(Estar3).addClass('fas');
+    $(Estar4).addClass('fas');
+    $(Estar5).addClass('fas');
+    $(EstarId).val(5);
+})
+$("#EditReset").click(function(){
+    $(Estar1).removeClass('fas');
+    $(Estar2).removeClass('fas');
+    $(Estar3).removeClass('fas');
+    $(Estar4).removeClass('fas');
+    $(Estar5).removeClass('fas');
+    $(EstarId).val(0);
+    $(Ecomment).val('');
+})

@@ -16,12 +16,21 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 //CREATE COMMENT
 router.post("/", middleware.isLoggedIn, function(req, res){
+    var text = req.body.text;
+    var rating = req.body.rating;
     Campground.findById(req.params.id, function(err, campground){
         if(err){
             console.log(err);
             res.redirect("/campgrounds");
         } else{
-            Comment.create(req.body.comment, function(err, comment){
+            
+            // var rating = req.body.rating;
+            Comment.create(
+                {
+                    text: text,
+                    rating: rating
+                },
+                function(err, comment){
                 if(err){
                     req.flash("error", "Something went wrong, please try again.");
                     console.log(err);
