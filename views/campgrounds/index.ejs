@@ -26,21 +26,28 @@
                         ₱<%= campground.price.toFixed(2) %></h5>
                         <% } %>
                         </span>
-                        <p class="mt-1 mb-0 text-primary">
-
-                
-                        <% var avg = Math.round(campground.rateAvg) %>
-                        <%= avg %> 
-                        <% for(var i=0; i<avg; i++){ %>
-                            <i class="fas fa-star"></i>
-                        <% } %>
-                        <% var rem = 5 - avg %> 
-                        <% for(var i=0; i<rem; i++){ %>
-                            <i class="far fa-star"></i>
-                        <% } %>
-
-                        <span class="text-secondary"><%= campground.rateCount %> Reviews</span>
-                        </p>
+                        <% if(campground.rateAvg != null && campground.rateAvg != 0){ %>
+                            <p class="mt-1 mb-0 text-primary">
+                                <% var avg = Math.round(campground.rateAvg) %>
+                                <% for(var i=0; i<avg; i++){ %>
+                                    <i class="fas fa-star"></i>
+                                <% } %>
+                                <% var rem = 5 - avg %> 
+                                <% for(var i=0; i<rem; i++){ %>
+                                    <i class="far fa-star"></i>
+                                <% } %>
+                                <span class="text-secondary"><%= campground.rateCount %>
+                                    <% if(campground.rateCount > 1){ %>
+                                        Reviews
+                                    <% } else{ %>
+                                        Review
+                                    <% } %> 
+                                </span>
+                            </p>
+                        <% } else{ %>
+                            <p class="mt-1 mb-0 text-secondary">No Reviews Yet</p>
+                        <% } %> 
+                        
                     </div>
                 </div>
             </div>
