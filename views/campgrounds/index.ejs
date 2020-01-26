@@ -27,9 +27,19 @@
                         <% } %>
                         </span>
                         <p class="mt-1 mb-0 text-primary">
-                        
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                        <span class="text-secondary"><%= campground.commentCount %> Reviews</span>
+
+                
+                        <% var avg = Math.round(campground.rateAvg) %>
+                        <%= avg %> 
+                        <% for(var i=0; i<avg; i++){ %>
+                            <i class="fas fa-star"></i>
+                        <% } %>
+                        <% var rem = 5 - avg %> 
+                        <% for(var i=0; i<rem; i++){ %>
+                            <i class="far fa-star"></i>
+                        <% } %>
+
+                        <span class="text-secondary"><%= campground.rateCount %> Reviews</span>
                         </p>
                     </div>
                 </div>

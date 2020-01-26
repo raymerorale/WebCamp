@@ -49,12 +49,12 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
 middlewareObj.checkCommentSingularity = function(req, res, next){
     if(req.isAuthenticated()){
 
-        Campground.find({hasRated: req.user._id}, function(err, campground){
+        Campground.findOne({hasRated: req.user._id, _id: req.params.id}, function(err, campground){
             if(err){
                 console.log(err);
                 res.redirect("back");
             } else{
-                if(campground.length == 0){
+                if(!campground){
                     next();
                 } else{
                     req.flash("error", "You have already reviewed this campground.");

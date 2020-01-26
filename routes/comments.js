@@ -38,7 +38,10 @@ router.post("/", middleware.checkCommentSingularity, function(req, res){
                     comment.save();
                     campground.comments.push(comment);
                     campground.save();
-                    Campground.findByIdAndUpdate(req.params.id, {$inc : {'commentCount' : 1}, $push: { 'hasRated': req.user._id } }).exec();
+                    Campground.findByIdAndUpdate(req.params.id, {
+                        // $inc : {'commentCount' : 1}, 
+                        $push: {'hasRated': req.user._id},  
+                     }).exec();
                     res.redirect("/campgrounds/"+ campground._id);
                     
                 }

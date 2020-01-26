@@ -72,6 +72,21 @@ router.get("/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
+            var ratingsArray = [];
+
+            foundCampground.comments.forEach(function(rating) {
+                ratingsArray.push(rating.rating);
+            });
+            if (ratingsArray.length === 0) {
+                foundCampground.rateAvg = 0;
+            } else {
+                var ratings = ratingsArray.reduce(function(total, rating) {
+                return total + rating;
+                });
+                foundCampground.rateAvg = ratings / foundCampground.comments.length;
+                foundCampground.rateCount = foundCampground.comments.length;
+            }
+            foundCampground.save();
             res.render("campgrounds/show", {campground: foundCampground});
         }
     });
