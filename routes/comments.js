@@ -35,11 +35,12 @@ router.post("/", middleware.checkCommentSingularity, function(req, res){
                 } else{
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
-                    comment.campName = req.params.id;
                     comment.save();
                     campground.comments.push(comment);
                     campground.save();
+                    Campground.findByIdAndUpdate(req.params.id, {$inc : {'commentCount' : 1}, $push: { 'hasRated': req.user._id } }).exec();
                     res.redirect("/campgrounds/"+ campground._id);
+                    
                 }
             });
         }
@@ -79,6 +80,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
             console.log(err);
             res.redirect("back");
         } else{
+            Campground.findByIdAndUpdate(req.params.id, {$inc : {'commentCount' : -1}, $pullAll: { 'hasRated': [req.user._id] } }).exec();
             req.flash("success", "Deleted successfully");
             res.redirect("back");
         }

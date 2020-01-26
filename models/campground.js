@@ -10,6 +10,8 @@ var campgroundSchema = new mongoose.Schema({
     starting: String,
     ending: String,
     amenities: String,
+    commentCount: Number,
+    hasRated: [],
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

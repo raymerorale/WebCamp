@@ -49,17 +49,17 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
 middlewareObj.checkCommentSingularity = function(req, res, next){
     if(req.isAuthenticated()){
 
-        Comment.find({campName: req.params.id}, function(err, result){
+        Campground.find({hasRated: req.user._id}, function(err, campground){
             if(err){
                 console.log(err);
                 res.redirect("back");
             } else{
-                if(result.length == 0){
+                if(campground.length == 0){
                     next();
                 } else{
                     req.flash("error", "You have already reviewed this campground.");
                     res.redirect("back");
-                }
+                } 
             }
         });
 
