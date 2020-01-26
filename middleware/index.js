@@ -46,6 +46,29 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
     }
 };
 
+middlewareObj.checkCommentSingularity = function(req, res, next){
+    if(req.isAuthenticated()){
+
+        Comment.find({campName: req.params.id}, function(err, result){
+            if(err){
+                console.log(err);
+                res.redirect("back");
+            } else{
+                if(result.length == 0){
+                    next();
+                } else{
+                    req.flash("error", "You have already reviewed this campground.");
+                    res.redirect("back");
+                }
+            }
+        });
+
+    } else{
+        req.flash("error", "You need to be logged in to do that!");
+        res.redirect("back");
+    }
+};
+
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();

@@ -15,7 +15,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 //CREATE COMMENT
-router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.checkCommentSingularity, function(req, res){
     var text = req.body.text;
     var rating = req.body.rating;
     Campground.findById(req.params.id, function(err, campground){
@@ -23,8 +23,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             console.log(err);
             res.redirect("/campgrounds");
         } else{
-            
-            // var rating = req.body.rating;
             Comment.create(
                 {
                     text: text,
@@ -37,6 +35,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 } else{
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
+                    comment.campName = req.params.id;
                     comment.save();
                     campground.comments.push(comment);
                     campground.save();

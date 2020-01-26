@@ -84,9 +84,6 @@ router.post("/search", function(req, res){
             console.log(err);
             res.redirect("/campgrounds");
         } else{
-            // if(foundCampground.length == 0){
-            //     req.flash("info", "Your search returned no matches.");
-            // } 
             res.render("campgrounds/index",
             {  
                 searchKey: req.body.search,

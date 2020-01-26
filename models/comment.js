@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var commentSchema = mongoose.Schema({
     text: String,
     rating: Number,
+    campName: String,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
