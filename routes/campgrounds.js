@@ -15,6 +15,7 @@ router.get("/", function(req, res){
             {
                 searchKey: null,
                 searchResult: null,
+                sortby: null,
                 campgrounds: allCampgrounds,
                 currentUser: req.user
             });
@@ -101,6 +102,7 @@ router.post("/search", function(req, res){
         } else{
             res.render("campgrounds/index",
             {  
+                sortby: null,
                 searchKey: req.body.search,
                 searchResult: foundCampground.length,
                 campgrounds: foundCampground
@@ -109,6 +111,64 @@ router.post("/search", function(req, res){
         }
     })
 })
+//SORT ROUTE
+router.post("/sortby", function(req, res){
+    
+    if(req.body.sortby == 'Lowest Price' || req.body.sortby == 'Highest Price'){
+        if(req.body.sortby == 'Lowest Price'){
+            var inc = 1;
+        } else{
+            var inc = -1;
+        }
+        Campground.find({}).sort({price : inc}).exec(function(err, foundCampground) {
+            if(err){
+                console.log(err);
+                res.redirect("/campgrounds");
+            } else{
+                res.render("campgrounds/index",
+                {  
+                    sortby: req.body.sortby,
+                    searchKey: null,
+                    searchResult: null,
+                    campgrounds: foundCampground
+                });
+            }
+        });
+    } else if(req.body.sortby == 'Highest Rated'){
+        Campground.find({}).sort({rateAvg : -1}).exec(function(err, foundCampground) {
+            if(err){
+                console.log(err);
+                res.redirect("/campgrounds");
+            } else{
+                res.render("campgrounds/index",
+                {  
+                    sortby: req.body.sortby,
+                    searchKey: null,
+                    searchResult: null,
+                    campgrounds: foundCampground
+                });
+            }
+        });
+    } else if(req.body.sortby == 'Most Reviewed'){
+        Campground.find({}).sort({rateCount : -1}).exec(function(err, foundCampground) {
+            if(err){
+                console.log(err);
+                res.redirect("/campgrounds");
+            } else{
+                res.render("campgrounds/index",
+                {  
+                    sortby: req.body.sortby,
+                    searchKey: null,
+                    searchResult: null,
+                    campgrounds: foundCampground
+                });
+            }
+        });
+    }
+})
+
+
+
 //EDIT ROUTE
 router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){

@@ -9,36 +9,47 @@
       </div>
     </div>
   </header>
-  <nav class="navbar navbar-light bg-light shadow">
-      <div class="container">
+  <nav id="searchNav" class="navbar navbar-expand navbar-light bg-white shadow-sm">
+    <div class="container">
+      <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text bg-primary text-light border-0" for="inputGroupSelect01">Sort By</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>Rating</option>
-                      <option value="1">Price</option>
-                      <option value="2">Latest</option>
-                      <option value="3">Oldest</option>
-                    </select>
-                  </div>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort By
+            </a>
+          <form action="/campgrounds/sortby" method="POST">
+              
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <button id="HighestRated" type="submit" class="dropdown-item">Highest Rated</button>
+                <button id="MostReviewed" type="submit" class="dropdown-item">Most Reviewed</button>
+                <button id="LowestPrice" type="submit" class="dropdown-item">Lowest Price</button>
+                <button id="HighestPrice" type="submit" class="dropdown-item">Highest Price</button>
+              </div> 
+              
+          </li>
+          <input type="text" name="sortby" value="<%= sortby %> " id="sortby" class="border-0 text-secondary nav-item">
+        </form>
         </ul>
-        
-            <form class="form-inline" action="/campgrounds/search" method="POST">
-                <div class="input-group">
-                    <input for="inputGroupSelect02" class="form-control input-group-text" name="search" type="search" placeholder="Search campground" aria-label="Search">
-                    <div class="input-group-append">
-                        <button id="inputGroupSelect02" class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+        <div class="d-none d-md-block">
+          <form action="/campgrounds/search" method="POST" class="input-group">
+            <input type="text" class="form-control" type="text" name="search" placeholder="Search Campgrounds..." aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-primary border-0" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
+            </div>
           
-        
+        </div>
+      </div>
     </div>
   </nav>
+  
+      
+        
+        
+            
+          
+
 
   
 

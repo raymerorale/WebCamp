@@ -98,3 +98,15 @@ $("#EditReset").click(function(){
     $(EstarId).val(0);
     $(Ecomment).val('');
 })
+$(HighestRated).click(function(){
+    $(sortby).val('Highest Rated');
+})
+$(MostReviewed).click(function(){
+    $(sortby).val('Most Reviewed');
+})
+$(LowestPrice).click(function(){
+    $(sortby).val('Lowest Price');
+})
+$(HighestPrice).click(function(){
+    $(sortby).val('Highest Price');
+})
