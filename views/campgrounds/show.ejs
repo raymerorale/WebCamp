@@ -107,9 +107,9 @@
                     <% campground.comments.forEach(function (comment) { %>
                         <li class="list-group-item">
                             <p class="m-0">
-                                <strong><%= comment.author.username %></strong>
+                                <strong class="mr-1"><%= comment.author.username %></strong>
                                 <span class="float-right text-secondary" style="font-size: 15px !important;">10 days ago</span>
-                                <span class="text-primary ml-2">
+                                <span class="text-primary d-block d-md-inline">
                                     <% for(var i=0; i<comment.rating; i++){ %>
                                         <i class="fas fa-star"></i>
                                     <% } %>
