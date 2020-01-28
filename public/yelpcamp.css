@@ -6,10 +6,6 @@ footer{
     position: absolute;
     font-size: 14px !important;
 }
-
-.navbar-brand{
-    font-family: 'Bowlby One SC', cursive;
-}
 .theme-bg-color{
     background-color: #6699ff !important;
 }
@@ -29,6 +25,10 @@ textarea{
 }
 .container-form{
     width: 50%;
+    margin: auto;
+}
+.container-login{
+    width: 30%;
     margin: auto;
 }
 .font-sm{

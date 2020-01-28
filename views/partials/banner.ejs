@@ -3,8 +3,8 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
-          <h1 class="light bowlby super">Welcome to YelpCamp!</h1>
-          <p class="light lead font-weight-bold montserrat">View our hand-picked campgrounds from all over the world.</p>
+          <h1 class="text-light bowlby super">Welcome to WebCamp!</h1>
+          <p class="text-light lead font-weight-bold montserrat">View our hand-picked campgrounds from all over the world.</p>
         </div>
       </div>
     </div>
@@ -35,14 +35,23 @@
             <input type="text" class="form-control" type="text" name="search" placeholder="Search Campgrounds..." aria-label="Search">
             <div class="input-group-append">
               <button class="btn btn-primary border-0" type="submit">
-                    <i class="fa fa-search"></i>
-                  </button>
+                <i class="fa fa-search"></i>
+              </button>
             </div>
-          
+          </form>
         </div>
       </div>
     </div>
   </nav>
+  <div class="mt-4 d-block d-md-none container">
+    <form action="/campgrounds/search" method="POST" class="input-group">
+      <input type="text" class="form-control" type="text" name="search" placeholder="Search Campgrounds..." aria-label="Search">
+      <div class="input-group-append">
+        <button class="btn btn-primary border-0" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+      </div>
+  </div>
   
       
         

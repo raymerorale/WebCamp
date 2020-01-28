@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>YelpCamp</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Welcome to WebCamp</title>
+        <link rel = "stylesheet" type="text/css" href="/bootstrap.css"/>
         <link rel="stylesheet" href="/landing.css">
-        <link rel="icon" href="/logoDesign.png">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="icon" href="/header-icon-webcamp.png">
+        <link href="https://fonts.googleapis.com/css?family=Righteous|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
     </head>
     <body>
-    
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        <% } %>
-    </div>
+
     
     <div id="landing-header">
- 		<h1 class="bigger-font">Welcome to YelpCamp!</h1>
+        <div class="text-center">
+            <img src="/icon-webcamp.png" style="width: 200px">
+        </div>
+        <h1 class="bigger-font righteous text-primary">Web<span class="text-secondary">Camp</span></h1>
 		<a href="/campgrounds" class="btn btn-lg btn-info">View All Campgrounds</a>
     </div>
     

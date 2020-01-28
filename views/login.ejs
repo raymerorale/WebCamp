@@ -1,25 +1,24 @@
 <%- include("./partials/header") %>
 <%- include("./partials/alert") %>
-<div class="container mt-5">
-    <h1 class="pt-2 mb-3 text-center">Login</h1>
-    <div class="w-adjust m-auto">
+<div class="col-10 col-md-6 col-lg-4 rounded ml-auto mr-auto mt-5 bg-white mt-5 p-3 shadow">
+    <div class="text-center">
+    <img src="/logo-webcamp.png" style="width: 200px">
+    </div>
+    <div class="mt-4">
         <form action="/login" method="POST">
             <div class="form-group">
+                <label>Username</label>
                 <input class="form-control" type="text" name="username" placeholder="username">
             </div>
             <div class="form-group">
+                <label>Password</label>
             <input class="form-control" type="password" name="password" placeholder="password">
             </div>
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <button class="btn btn-primary w-100">Log In</button>
             </div>
+            <p class="text-center">Don't have an account? <a href="/register">Sign up</a></p>
         </form >
     </div>
 </div>
-
-<style type="text/css">
-    footer{
-        bottom: 0;
-    }
-</style>
 <%- include("./partials/footer") %>
