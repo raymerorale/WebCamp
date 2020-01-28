@@ -36,15 +36,16 @@
                   <li class="list-group-item"><%= campground.contact %></li>
                 </ul>
             </div>
-            <div class="card shadow">
-                <div class="mb-0 pb-0" style="overflow:hidden;background:none!important;height:300px;">
-                    <iframe class="card-img-top" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=<%= campground.location %>&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    
-                </div>
+            <div class="card mb-4 shadow">
                 <div class="mt-0 card-header">
                     <i class="fas fa-map-marked-alt"></i>
                     Location
                 </div>
+                <div class="mb-0 pb-0" style="overflow:hidden;background:none!important;height:300px;">
+                    <iframe class="card-img" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=<%= campground.location %>&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    
+                </div>
+                
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><%= campground.location %></li>
                 </ul>
