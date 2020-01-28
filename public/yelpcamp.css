@@ -23,14 +23,7 @@ textarea{
 .img-resize{
     height: 240px;
 }
-.container-form{
-    width: 50%;
-    margin: auto;
-}
-.container-login{
-    width: 30%;
-    margin: auto;
-}
+
 .font-sm{
     font-size: 12px !important;
 }
