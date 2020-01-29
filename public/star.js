@@ -1,4 +1,49 @@
 
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      var forms = document.getElementsByClassName('needs-validation');
+     
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        var password = $("#password").val();
+        var confirmpassword = $("#confirm_password").val();
+            if(password === confirmpassword){ 
+                $("#validate").removeClass("error");
+                form.classList.add('was-validated');
+                $("#confirm_password").removeClass("error-text");
+                $("#validate").html("password matched"); 
+            }
+            else{
+                form.classList.add('was-validated');
+                $("#validate").html("password should match");
+                $("#validate").addClass("error");
+                $("#confirm_password").addClass("error-text");
+                event.preventDefault();
+                event.stopPropagation();   
+
+            }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+window.addEventListener('load', function() {
+    if($("#password").val() === '')
+        $("#confirm_password").prop('disabled', true);
+});
+$("#password").change(function() {
+    if($("#password").val() !== '')
+        $("#confirm_password").prop('disabled', false);
+    else
+        $("#confirm_password").prop('disabled', true);
+
+});
+
 $("#star1").click(function(){
     $(star1).addClass('fas');
     $(star2).removeClass('fas');
@@ -139,3 +184,5 @@ $(HighestPrice).click(function(){
 //   }, 20);
 
 // } 
+
+

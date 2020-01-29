@@ -27,3 +27,14 @@ textarea{
 .font-sm{
     font-size: 12px !important;
 }
+.error{
+    color:red !important;
+    
+}
+.error-text{
+    border:1px solid red !important;
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: none !important;
+    background-repeat: no-repeat;   
+}
