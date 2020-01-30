@@ -15,7 +15,12 @@ router.get("/register", function(req, res){
 });
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req, res){
-    User.register(new User({username: req.body.username}), 
+    User.register(new User({
+        username: req.body.username,
+        completeName: req.body.completeName,
+        email: req.body.email,
+        displayImg: req.body.displayImg
+    }), 
     req.body.password,
     function(err, user){
         if(err){
@@ -24,6 +29,7 @@ router.post("/register", function(req, res){
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function(){
+            console.log(user);
             req.flash("success", "Welcome to YelpCamp " + user.username + "!");
             res.redirect("/campgrounds");
         });

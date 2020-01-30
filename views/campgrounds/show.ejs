@@ -135,7 +135,7 @@
                                 <div class="card-body collapse" style="margin-top:30px" id="collapseEdit">
                                     <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                                         <textarea id="Ecomment" class="form-control" name="comment[text]"><%= comment.text %></textarea>
-                                        <p class="mb-0 mt-2">Rating:
+                                        <p class="mb-0 mt-2"><span class="d-none d-md-inline">Rating:</span>
                                             <span class="text-primary">
                                                 <i class="far fa-star" id="Estar1"></i>
                                                 <i class="far fa-star" id="Estar2"></i>

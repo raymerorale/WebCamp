@@ -39,11 +39,15 @@
                                 <a class="nav-link" href="/register">Sign Up</a>
                             </li>
                         <% } else{ %>
-                            <li class="nav-item">
-                                <a class="nav-link"><%= currentUser.username %></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="h5 fa fa-user-circle p-0 m-0 mr-1"></i><%= currentUser.username %>
+                                </a>
+                                <div class="p-1 dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a href="/profile" class="dropdown-item">Profile</a>
+                                    <a href="/logout" class="dropdown-item">Logout</a>
+                                    
+                                </div>
                             </li>
                         <% } %>
                     </ul>
