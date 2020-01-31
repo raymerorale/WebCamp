@@ -1,5 +1,5 @@
 <!-- <button onclick="topFunction()" id="myBtn" title="Go to top" class="arr-to-top fas fa-caret-square-up"></button> -->
-  <header class="masthead">
+  <header class="masthead d-none d-md-block">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
@@ -30,9 +30,13 @@
               </div> 
               
           </li>
-          <input type="text" name="sortby" value="<%= sortby %> " id="sortby" class="border-0 text-secondary nav-item">
-        </form>
+          <input style="width:120px" type="text" name="sortby" value="<%= sortby %> " id="sortby" class="border-0 text-secondary nav-item">
+          </form>
+          
         </ul>
+        <div class="d-block d-md-none">
+          <a href="/campgrounds/new" class="btn btn-outline-primary text-primary"><i class="fa fa-plus mr-1"></i>Camp</a href="/campgrounds/new">
+        </div>
         <div class="d-none d-md-block">
           <form action="/campgrounds/search" method="POST" class="input-group">
             <input type="text" class="form-control" type="text" name="search" placeholder="Search Campgrounds..." aria-label="Search">

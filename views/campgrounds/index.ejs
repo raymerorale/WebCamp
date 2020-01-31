@@ -2,13 +2,16 @@
 <%- include("../partials/banner") %>
 <%- include("../partials/alert") %>
 <div class="container">
+    
     <% if(searchKey != null && searchKey != ''){ %>
-        <p class="mt-4 text-secondary h2">
-            Search results for '<%= searchKey %>'
+    <div class="row m-2">
+        <p class="mt-2 text-secondary h2">
+            Search results for <em>'<%= searchKey %>'</em>
             <span class='float-right'><%= searchResult %> items</span>
         </p>
+    </div>
     <% } %>
-  <div class="row mt-4">
+    <div class="row mt-4">
         <% campgrounds.forEach(function(campground) { %>
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card shadow mb-4">
