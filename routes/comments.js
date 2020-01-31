@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
+
 //NEW COMMENT
 router.get("/new", middleware.isLoggedIn, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
@@ -42,6 +43,7 @@ router.post("/", middleware.checkCommentSingularity, function(req, res){
                         // $inc : {'commentCount' : 1}, 
                         $push: {'hasRated': req.user._id},  
                      }).exec();
+                     console.log(comment);
                     res.redirect("/campgrounds/"+ campground._id);
                     
                 }
@@ -58,7 +60,9 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
             req.flash("error", "Cannot find comment");
             res.redirect("back");
         } else{
+            
             res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+            
         }
     });
 });

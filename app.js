@@ -1,7 +1,6 @@
 var express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
-    seedDB          = require("./seeds"),
     flash           = require("connect-flash"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
@@ -15,7 +14,6 @@ var commentRoutes       = require("./routes/comments"),
 const port = process.env.PORT || 3000;
 const ip = process.env.IP;
 const database = process.env.DATABASEURL || "mongodb://localhost/yelp-camp";
-
 
 mongoose.connect(database,
     {
@@ -31,6 +29,7 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+app.locals.moment = require("moment");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -41,6 +40,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 // seedDB();
 

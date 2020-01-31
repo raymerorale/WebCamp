@@ -108,7 +108,7 @@
                         <li class="list-group-item">
                             <p class="m-0">
                                 <strong class="mr-1"><%= comment.author.username %></strong>
-                                <span class="float-right text-secondary" style="font-size: 15px !important;">10 days ago</span>
+                                <span class="float-right text-secondary" style="font-size: 15px !important;"><%= moment(comment.date).fromNow() %></span>
                                 <span class="text-primary d-block d-md-inline">
                                     <% for(var i=0; i<comment.rating; i++){ %>
                                         <i class="fas fa-star"></i>
@@ -135,6 +135,7 @@
                                 <div class="card-body collapse" style="margin-top:30px" id="collapseEdit">
                                     <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                                         <textarea id="Ecomment" class="form-control" name="comment[text]"><%= comment.text %></textarea>
+                                        <input name="comment[date]" value="<%= Date.now() %>" class="d-none">
                                         <p class="mb-0 mt-2"><span class="d-none d-md-inline">Rating:</span>
                                             <span class="text-primary">
                                                 <i class="far fa-star" id="Estar1"></i>
