@@ -1,0 +1,41 @@
+<%- include("../partials/header") %>
+<%- include("../partials/alert") %>
+
+<div class="container mt-4">
+    <div class="row m-0">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+            <div class="card shadow mb-4">
+                <img src="../pictures/male-avatar.jpg" class="card-img-top" alt="profile picture">
+                <div class="card-body">
+                    <h5 class="card-title pb-0 mb-0"><%= user.completeName %></h5>
+                    <span> <%= user.username %></span>
+                    <p class="card-text mt-2">
+                        <i class="fas fa-envelope"></i> <a href="https://<%= user.email %>"><%= user.email %></a></br>
+                        <i class="fas fa-phone"></i> <%= user.contact %>
+                    </p>
+                    <a href="/profile/edit" class="btn btn-sm btn-secondary text-light">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <p class="h3 text-center mt-2 mb-4">Posted Campgrounds</p>
+            <div class="row">
+            <% campgrounds.forEach(function(campground) { %>
+                <div class="col-xl-4 d-inline-block">
+                    <div class="card m-0 mb-4">
+                        <a href="/campgrounds/<%= campground._id %>">
+                            <img src=" <%= campground.image %>" class="card-img-top" style="height: 180px;">
+                        </a>
+                        <div class="card-body">
+                            <a href="/campgrounds/<%= campground._id %>" 
+                            class="lead card-title text-dark">
+                            <%= campground.name %></a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer") %>

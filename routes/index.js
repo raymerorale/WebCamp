@@ -4,6 +4,7 @@ var passport = require("passport");
 var User = require("../models/user");
 
 
+
 //HOME PAGE
 router.get("/", function(req, res){
     res.render("landing");
@@ -56,5 +57,8 @@ router.get("/logout", function(req, res){
     req.flash("success", "Successfully logged out!");
     res.redirect("/campgrounds");
 });
+
+
+
 
 module.exports = router;

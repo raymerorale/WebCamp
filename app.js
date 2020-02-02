@@ -9,6 +9,7 @@ var express         = require("express"),
 
 var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
+    profileRoutes       = require("./routes/profile"),
     indexRoutes         = require("./routes/index");
 
 const port = process.env.PORT || 3000;
@@ -52,6 +53,7 @@ app.use(function(req, res, next){
 });
 
 app.use(indexRoutes);
+app.use("/profile", profileRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
