@@ -21,7 +21,7 @@
             <p class="h3 text-center mt-2 mb-4">Posted Campgrounds</p>
             <div class="row">
             <% campgrounds.forEach(function(campground) { %>
-                <div class="col-xl-4 d-inline-block">
+                <div class="col-lg-6 col-xl-4 d-inline-block">
                     <div class="card m-0 mb-4">
                         <a href="/campgrounds/<%= campground._id %>">
                             <img src=" <%= campground.image %>" class="card-img-top" style="height: 180px;">

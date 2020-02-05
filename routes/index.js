@@ -3,12 +3,15 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 
-
-
 //HOME PAGE
 router.get("/", function(req, res){
     res.render("landing");
 });
+
+//ABOUT PAGE
+router.get("/about", function(req, res){
+    res.render("about");
+})
 
 //SHOW REGISTER FORM
 router.get("/register", function(req, res){
