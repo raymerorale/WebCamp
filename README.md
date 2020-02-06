@@ -19,8 +19,8 @@ This was originally named YelpCamp and a project for a web development course ta
 2. Create a cloudinary account to get an API key and secret code
 
 ```
-git clone https://github.com/raymerorale/stark-fortress-73557.git
-cd stark-fortress-73557
+git clone https://github.com/raymerorale/WebCamp.git
+cd WebCamp
 npm install
 ```
 
